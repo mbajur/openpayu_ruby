@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  push:
+    branches:
+    - master
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        ruby: ["3.2", "3.3"]
+
+    env:
+      RAILS_ENV: test
+      COVERAGE: 1
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby }}
+        bundler-cache: true # install gems and cache
+
+    - name: "Run Tests"
+      run: |
+        bundle exec rspec --force-color --format d
+
+  # rubocop:
+  #   runs-on: ubuntu-latest
+
+  #   env:
+  #     BUNDLE_GEMFILE: spec/gemfiles/rubocop.gemfile
+
+  #   steps:
+  #   - uses: actions/checkout@v4
+
+  #   - uses: ruby/setup-ruby@v1
+  #     with:
+  #       ruby-version: 3.1
+  #       bundler-cache: true
+
+  #   - name: Rubocop
+  #     run: |
+  #       bundle exec rubocop -c .rubocop.yml
