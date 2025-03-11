@@ -7,7 +7,7 @@ The OpenPayU Ruby library provides integration access to the PayU Gateway API ve
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'openpayu'
+gem 'openpayu', github: 'mbajur/openpayu_ruby'
 ```
 
 And then execute:
