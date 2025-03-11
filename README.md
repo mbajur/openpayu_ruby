@@ -6,7 +6,9 @@ The OpenPayU Ruby library provides integration access to the PayU Gateway API ve
 
 Add this line to your application's Gemfile:
 
-    gem 'openpayu'
+```ruby
+gem 'openpayu'
+```
 
 And then execute:
 
@@ -17,7 +19,7 @@ Or install it yourself as:
     $ gem install openpayu
 
 ## Configure Gem
-  To configure OpenPayU environment add a file to config/initializers/openpayu.rb containing:
+To configure OpenPayU environment add a file to config/initializers/openpayu.rb containing:
 
 ```ruby
 OpenPayU::Configuration.configure do |config|
@@ -115,13 +117,13 @@ When you have ready order Hash you can create new order:
   @response = OpenPayU::Order.create(order)
 ```
 
-If request succeed to create it will return "COMPLETE" as a status_code.
+If request succeed to create it will return `COMPLETE` as a status_code.
 There might be also a redirect to page with confirmation.
 There are three redirect types:
 
-* WARNING_CONTINUE_REDIRECT
-* WARNING_CONTINUE_CVV
-* WARNING_CONTINUE_3DS
+* `WARNING_CONTINUE_REDIRECT`
+* `WARNING_CONTINUE_CVV`
+* `WARNING_CONTINUE_3DS`
 
 ```ruby
 case @response.status["status_code"]
@@ -143,11 +145,13 @@ end
 If you pass the same Hash of order as above to hosted_order_form you will
 get a String containgin a form to embed in your view
 
-    # in your controller
-    @order_form_data = OpenPayU.hosted_order_form(order)
+```ruby
+# in your controller
+@order_form_data = OpenPayU.hosted_order_form(order)
 
-    # in your view
-    <%= @order_form_data.html_safe %>
+# in your view
+<%= @order_form_data.html_safe %>
+```
 
 ### Retrieving order from OpenPayU
 You can retrieve order by its PayU order_id
