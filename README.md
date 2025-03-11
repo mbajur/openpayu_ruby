@@ -14,10 +14,6 @@ And then execute:
 
     $ bundle
 
-Or install it yourself as:
-
-    $ gem install openpayu
-
 ## Configure Gem
 To configure OpenPayU environment add a file to config/initializers/openpayu.rb containing:
 
