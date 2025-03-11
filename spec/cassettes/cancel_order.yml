@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: delete
-    uri: https://114207:1f9fd7298097b9414db5d1bfd1204d20@secure.payu.com/api/v2/orders/VQWQ6XMVKR140415GUEST000P01
+    uri: https://secure.payu.com/api/v2/orders/VQWQ6XMVKR140415GUEST000P01
     body:
       encoding: US-ASCII
       string: ''

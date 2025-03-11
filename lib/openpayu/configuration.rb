@@ -17,7 +17,7 @@ module OpenPayU
         if block_given?
           yield self
         else
-          file = File.open(file_path) if file_path && File.exists?(file_path)
+          file = File.open(file_path) if file_path && File.exist?(file_path)
           env = defined?(Rails) ? Rails.env : ENV['RACK_ENV']
           config = YAML.load(file)[env]
           if config.present?

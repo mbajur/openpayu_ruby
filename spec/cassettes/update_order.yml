@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: put
-    uri: https://114207:1f9fd7298097b9414db5d1bfd1204d20@secure.payu.com/api/v2/orders/NJZFFJ82D2140528GUEST000P01/status
+    uri: https://secure.payu.com/api/v2/orders/NJZFFJ82D2140528GUEST000P01/status
     body:
       encoding: UTF-8
       string: '{"orderStatus":"COMPLETED","orderId":"NJZFFJ82D2140528GUEST000P01"}'

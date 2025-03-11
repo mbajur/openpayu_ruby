@@ -1,15 +1,15 @@
 # -*- encoding : utf-8 -*-
-require 'codeclimate-test-reporter'
-CodeClimate::TestReporter.start
 require 'rubygems'
 require 'openpayu'
 require 'test_objects/order'
 require 'vcr'
+require 'webmock/rspec'
 
 VCR.configure do |c|
   c.cassette_library_dir                    = 'spec/cassettes'
-  c.hook_into                               :fakeweb
+  c.hook_into                               :webmock
   c.allow_http_connections_when_no_cassette = true
+  # c.debug_logger = File.open(ARGV.first, 'w')
 end
 
 RSpec.configure do |config|
