@@ -24,7 +24,7 @@ module OpenPayU
         @parsed_data['status']
       end
 
-       def order_status
+      def order_status
         @parsed_data['orders']['orders'][1]['status']
       end
 

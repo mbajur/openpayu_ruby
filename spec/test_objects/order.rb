@@ -7,7 +7,6 @@ module  TestObject
         merchant_pos_id: OpenPayU::Configuration.merchant_pos_id,
         customer_ip: '127.0.0.1',
         ext_order_id: 1342,
-        order_url: 'http://localhost/',
         description: 'New order',
         currency_code: 'PLN',
         total_amount: 100,
