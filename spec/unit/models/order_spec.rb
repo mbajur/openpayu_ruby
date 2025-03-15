@@ -23,7 +23,6 @@ describe OpenPayU::Models::Order do
     context 'prepare correct Hash' do
       specify do
         hash = order.prepare_keys
-        hash.delete('ReqId')
         hash.has_key?('merchantPosId')
         hash.has_key?('buyer')
         hash.has_key?('products')
