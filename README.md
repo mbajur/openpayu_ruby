@@ -25,7 +25,6 @@ OpenPayU::Configuration.configure do |config|
   config.service_domain   = 'payu.com'
   config.protocol         = 'https'
   config.env              = 'secure'
-  config.order_url        = 'http://localhost/order'
   config.notify_url       = 'http://localhost/notify'
   config.continue_url     = 'http://localhost/success'
 end
@@ -47,7 +46,6 @@ development:
   service_domain: payu.com
   protocol: https
   env: secure
-  order_url: http://localhost/order
   notify_url: http://localhost/notify
   continue_url: http://localhost/success
 production:
@@ -57,7 +55,6 @@ production:
   service_domain: payu.com
   protocol: https
   env: secure
-  order_url: http://localhost/order
   notify_url: http://localhost/notify
   continue_url: http://localhost/success
 ```
@@ -73,7 +70,6 @@ order = {
   merchant_pos_id: "145227",
   customer_ip: "127.0.0.1", # You can user request.remote_ip in your controller
   ext_order_id: 1342, #Order id in your system
-  order_url: "http://localhost/",
   description: "New order",
   currency_code: "PLN",
   total_amount: 10000,
@@ -130,7 +126,7 @@ when /WARNING_CONTINUE_/
   redirect_to @response.redirect_uri
 else
   # in other cases something went wrong
-  logger.info "Unable to create order. 
+  logger.info "Unable to create order.
     Status: #{@response.status["status_code"]}.
     Response: #{@response}"
 end
@@ -156,7 +152,7 @@ You can retrieve order by its PayU order_id
 @response = OpenPayU::Order.retrieve("Z963D5JQR2230925GUEST000P01")
 ```
 
-### Cancelling order 
+### Cancelling order
 You can cancel order by its PayU order_id
 
 ```ruby
