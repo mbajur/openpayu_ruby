@@ -8,9 +8,9 @@ module OpenPayU
     include Singleton
 
     class << self
-      attr_accessor :env, :merchant_pos_id, :pos_auth_key, :client_id,
+      attr_accessor :env, :client_id, :client_secret, :merchant_pos_id, :pos_auth_key, :client_id,
         :client_secret, :signature_key, :service_domain, :country, :data_format,
-          :algorithm, :protocol, :notify_url, :complete_url
+          :algorithm, :protocol, :notify_url, :complete_url, :cache
 
       def configure(file_path = nil)
         set_defaults
@@ -50,8 +50,12 @@ module OpenPayU
         true
       end
 
+      def get_host
+        "#{@protocol}://#{@env}.#{@service_domain}"
+      end
+
       def get_base_url
-        "#{@protocol}://#{@env}.#{@service_domain}/api/v2_1/"
+        "#{get_host}/api/v2_1/"
       end
 
       def use_ssl?

@@ -2,15 +2,18 @@
 require_relative 'openpayu/version'
 require_relative 'openpayu/configuration'
 require_relative 'openpayu/connection'
+require_relative 'openpayu/new_connection'
 require_relative 'openpayu/exceptions'
 require_relative 'openpayu/order'
 require_relative 'openpayu/refund'
 require_relative 'openpayu/token'
+require_relative 'openpayu/access_token'
 require_relative 'openpayu/document'
 require_relative 'openpayu/models/model'
 require_relative 'openpayu/models/order'
 require_relative 'openpayu/documents/request'
 require_relative 'openpayu/documents/response'
+require_relative 'openpayu/models/access_token'
 require_relative 'openpayu/models/address'
 require_relative 'openpayu/models/buyer'
 require_relative 'openpayu/models/buyer/delivery'
@@ -61,5 +64,11 @@ module OpenPayU
     html_form << "<input type='hidden' name='OpenPayu-Signature'
       value='#{sign_form(render_hash)}' />
         <button type='submit' formtarget='_blank' />\n</form>"
+  end
+
+  def self.ensure_token
+    Configuration.cache.fetch('openpayu_access_token', expires_in: 43000) do
+      AccessToken.retrieve
+    end
   end
 end
