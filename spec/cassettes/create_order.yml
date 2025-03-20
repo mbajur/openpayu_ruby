@@ -2,10 +2,45 @@
 http_interactions:
 - request:
     method: post
-    uri: https://secure.payu.com/api/v2/orders
+    uri: https://secure.payu.com/pl/standard/user/oauth/authorize?client_id=123&client_secret=foobar&grant_type=client_credentials
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - '*/*'
+      user-agent:
+      - Ruby
+      content-type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      server:
+      - nginx
+      date:
+      - Wed, 28 May 2014 08:25:01 GMT
+      content-type:
+      - application/json
+      transfer-encoding:
+      - chunked
+      connection:
+      - close
+      expires:
+      - '-1'
+    body:
+      encoding: US-ASCII
+      string: '{"access_token":"7a490846-d898-4780-8ce8-5a41efbb0000","token_type":"bearer","expires_in":43199,"grant_type":"client_credentials"}'
+    http_version: '1.1'
+  recorded_at: Wed, 28 May 2014 08:25:01 GMT
+- request:
+    method: post
+    uri: https://secure.payu.com/api/v2_1/orders
     body:
       encoding: UTF-8
-      string: '{"currencyCode":"PLN","validityTime":"48000","reqId":"{4911fcac-8702-4d77-8fa6-da2af7a064cc}","merchantPosId":"114207","continueUrl":"http://localhost/","buyer":{"lastName":"Kowalski","email":"dd@ddd.pl","firstName":"Jan","phone":"123123123"},"totalAmount":100,"notifyUrl":"http://localhost/","products":{"products":[{"name":"Mouse","quantity":1,"unitPrice":100}]},"orderUrl":"http://localhost/","extOrderId":1342,"customerIp":"127.0.0.1","description":"New
+      string: '{"currencyCode":"PLN","validityTime":"48000","merchantPosId":"114207","continueUrl":"http://localhost/","buyer":{"lastName":"Kowalski","email":"dd@ddd.pl","firstName":"Jan","phone":"123123123"},"totalAmount":100,"notifyUrl":"http://localhost/","products":{"products":[{"name":"Mouse","quantity":1,"unitPrice":100}]},"extOrderId":1342,"customerIp":"127.0.0.1","description":"New
         order"}'
     headers:
       accept:

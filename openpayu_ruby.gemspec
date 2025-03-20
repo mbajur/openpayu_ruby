@@ -18,12 +18,13 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
+  spec.add_runtime_dependency "activemodel"
+  spec.add_runtime_dependency "activesupport"
+  spec.add_runtime_dependency "faraday"
   spec.add_development_dependency "rake"
   spec.add_development_dependency "rspec"
   spec.add_development_dependency "activemodel"
   spec.add_development_dependency "activesupport"
-  spec.add_runtime_dependency "activemodel"
-  spec.add_runtime_dependency "activesupport"
   spec.add_development_dependency "vcr"
   spec.add_development_dependency "webmock"
   spec.add_development_dependency "yard"

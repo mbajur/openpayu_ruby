@@ -1,8 +1,43 @@
 ---
 http_interactions:
 - request:
+    method: post
+    uri: https://secure.payu.com/pl/standard/user/oauth/authorize?client_id=123&client_secret=foobar&grant_type=client_credentials
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept:
+      - '*/*'
+      user-agent:
+      - Ruby
+      content-type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      server:
+      - nginx
+      date:
+      - Wed, 28 May 2014 08:25:01 GMT
+      content-type:
+      - application/json
+      transfer-encoding:
+      - chunked
+      connection:
+      - close
+      expires:
+      - '-1'
+    body:
+      encoding: US-ASCII
+      string: '{"access_token":"7a490846-d898-4780-8ce8-5a41efbb0000","token_type":"bearer","expires_in":43199,"grant_type":"client_credentials"}'
+    http_version: '1.1'
+  recorded_at: Wed, 28 May 2014 08:25:01 GMT
+- request:
     method: delete
-    uri: https://secure.payu.com/api/v2/orders/VQWQ6XMVKR140415GUEST000P01
+    uri: https://secure.payu.com/api/v2_1/orders/VQWQ6XMVKR140415GUEST000P01
     body:
       encoding: US-ASCII
       string: ''

@@ -42,7 +42,7 @@ module OpenPayU
         hash.each_pair do |k, v|
           attrs[k.camelize(:lower)] =
             if v.is_a? Array
-              { k.camelize(:lower) =>  v.map(&:prepare_keys) }
+              v.map(&:prepare_keys)
             elsif v.class.name =~ /OpenPayU::Models/
               v.prepare_keys
             else
