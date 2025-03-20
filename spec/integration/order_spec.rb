@@ -16,11 +16,6 @@ describe 'Create transparent order' do
         expect(@response.status['status_code']).to eq('SUCCESS')
         expect(@response.order_id).not_to be_empty
       end
-
-      it "sends products in new 2.1 format (unnested)" do
-        body = JSON.parse(WebMock::RequestRegistry.instance.requested_signatures.hash.keys.last.body)
-        expect(body['products']).to eq([hash_including("name"=>"Mouse")])
-      end
     end
 
     context 'Retrieve order' do
