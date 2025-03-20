@@ -26,6 +26,13 @@ describe OpenPayU::Models::Order do
         hash.has_key?('merchantPosId')
         hash.has_key?('buyer')
         hash.has_key?('products')
+
+        expect(hash['products']).to be_a(Array)
+        product = hash['products'].first
+
+        expect(product['name']).to eq('Mouse')
+        expect(product['quantity']).to eq(1)
+        expect(product['unitPrice']).to eq(100)
       end
     end
   end
