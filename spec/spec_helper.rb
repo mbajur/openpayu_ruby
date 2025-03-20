@@ -23,6 +23,8 @@ RSpec.configure do |config|
       cfg.service_domain   = 'payu.com'
       cfg.protocol         = 'https'
       cfg.data_format      = 'json'
+      cfg.client_id        = '123'
+      cfg.client_secret    = 'foobar'
     end
   end
 end

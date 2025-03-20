@@ -25,7 +25,7 @@ module OpenPayU
       end
 
       def order_status
-        @parsed_data['orders']['orders'][1]['status']
+        @parsed_data['orders'][0]['status']
       end
 
       Models::Order::STATUSES.each do |method|

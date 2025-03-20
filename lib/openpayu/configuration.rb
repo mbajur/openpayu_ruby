@@ -35,6 +35,7 @@ module OpenPayU
         @country = 'pl'
         @algorithm = 'MD5'
         @data_format = 'json'
+        @cache = NullCache.new
       end
 
       def required_parameters

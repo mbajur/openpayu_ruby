@@ -40,10 +40,8 @@ module OpenPayU
     private
 
     def self.authenticate(request)
-      request.basic_auth(
-        OpenPayU::Configuration.merchant_pos_id,
-        OpenPayU::Configuration.signature_key
-      )
+      request['Authorization'] = "Bearer #{access_token}"
+
       request
     end
 
@@ -67,6 +65,14 @@ module OpenPayU
         "application/#{OpenPayU::Configuration.data_format}"
       response = http.request(request)
       { response: response, request: request }
+    end
+
+    def self.access_token
+      token = Configuration.cache.fetch('openpayu_access_token', expires_in: 43000) do
+        AccessToken.retrieve
+      end
+
+      token.access_token
     end
 
   end
