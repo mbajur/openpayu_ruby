@@ -8,8 +8,8 @@ module OpenPayU
     include Singleton
 
     class << self
-      attr_accessor :env, :client_id, :client_secret, :merchant_pos_id, :pos_auth_key, :client_id,
-        :client_secret, :signature_key, :service_domain, :country, :data_format,
+      attr_accessor :env, :client_id, :client_secret, :merchant_pos_id, :pos_auth_key,
+          :signature_key, :service_domain, :country, :data_format,
           :algorithm, :protocol, :notify_url, :complete_url, :cache
 
       def configure(file_path = nil)
